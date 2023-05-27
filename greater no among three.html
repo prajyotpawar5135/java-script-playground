@@ -1,0 +1,47 @@
+
+<html>
+
+<head>
+
+    <script>
+        function calculateResult(){
+            
+            var number1=parseInt(document.getElementById("num1").value)
+            var number2=parseInt(document.getElementById("num2").value)
+            var number3=parseInt(document.getElementById("num3").value)
+
+                if(number1>number2 && number1>number3)
+                {     
+                  
+                    document.getElementById("mydiv").innerHTML=("number 1 is greater")
+                }
+                else if(number2>number3 && number2>number1){
+                  document.getElementById("mydiv").innerHTML=("number 2 is greater")
+
+                }
+                else{
+               document.getElementById("mydiv").innerHTML=("number 3 is greater");
+
+                }
+
+        }
+    </script>
+</head>
+
+<body>
+    <form >
+
+        number:1<input type="text" name="num1" id="num1" placeholder="Enter num1"><br>
+        number:2<input type="text" name="num2" id="num2" placeholder="Enter num2"><br>
+        number:3<input type="text" name="num3" id="num3" placeholder="Enter num3"><br>
+        <button type="button" name="but" id="but" value="button" onclick="calculateResult()">result</button>
+    </form>
+
+    <div id="mydiv">
+
+    </div>
+
+
+</body>
+
+</html>
