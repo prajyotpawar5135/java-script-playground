@@ -1,0 +1,62 @@
+<html>
+    <head>
+<script>
+
+function calculations(){
+    var result=0
+     var number1=parseInt(document.getElementById("num1").value);
+     var number2=parseInt(document.getElementById("num2").value);
+
+     var arr=document.getElementById("operation"); 
+     var pos=arr.selectedIndex;
+     var calc=arr.options[pos].value;
+
+    switch(calc){
+
+            case "Addition":
+             result=number1+number2;
+            break;
+            
+            case "subtraction":
+             result=number1-number2;
+            break;
+
+
+            case "Multiplication":
+             result=number1*number2;
+            break;
+
+
+            case "Division":
+             result=number1/number2;
+            break;
+    }
+
+    document.getElementById("mydiv").innerHTML+="result="+result;
+
+}
+</script>
+
+    </head>
+
+<body>
+   Number1:<input type="text" name="num1" id="num1" placeholder="Enter num1"><br> 
+   Number2:<input type="text" name="num2" id="num2" placeholder="Enter num2"><br> 
+   <!-- Operation<input type="char" name="opr" id="opr" placeholder="enter operator"><br>
+   <button type="button" name="but" id="but" value="button" onclick="calculations()">Output</button><br> -->
+
+  Operation:<select type="text" id="operation">
+     <option value="Addition">+</option>
+     <option value="subtraction">-</option>
+     <option value="Multiplication">*</option>
+     <option value="Division">/</option>
+  </select><br>
+
+   <button type="button" name="butt" id="butt" value="button" onclick="calculations()">result</button><br>
+
+   <div id="mydiv">
+
+   </div>
+
+</body>
+</html>
