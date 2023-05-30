@@ -1,0 +1,30 @@
+<html>
+<head>
+    <script>
+  function calcResult(){
+var number=parseInt(document.getElementById("num").value);
+var rem;
+var res=0;
+var sum=0;
+while(number>0){
+    
+     rem=number%10;
+     res=res+rem;
+     number=parseInt(number/10);
+}
+document.getElementById("mydiv").innerHTML+="addition="+res;
+  }
+
+    </script>
+</head>
+
+<body>
+Number:<input type="text" name="num" id="num"><br>
+<button type="button" name="butt" id="butt" onclick="calcResult()">result</button>
+    
+
+</body>
+<div id="mydiv">
+
+</div>
+</html>
