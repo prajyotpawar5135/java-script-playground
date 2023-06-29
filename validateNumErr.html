@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <script>
+
+            function validate(num,err)
+            {
+                var a=document.getElementById(num).value;
+                        if(a===""|| isNaN(a))
+                        {
+                            document.getElementById(err).innerHTML="pls enter a numeric data";
+                            return false;
+                        }
+                        document.getElementById(err).innerHTML="";
+
+                        return true;
+            }
+
+                function validateInput()
+                {
+                    flag1=validate("num1","err1");
+                    flag2=validate("num2","err2");
+                    if(flag1  && flag2)
+                    {
+                        var p=document.getElementById("num1").value;
+                        var q=document.getElementById("num2").value;
+                        var ans= p+q;
+                        document.getElementById("mydiv").innerHTML=ans;
+                    }
+                    else{
+                        alert("invalid input")
+                    }
+                }
+
+                
+        </script>
+    </head>
+
+    <body>
+        number 1:<input type="text" name="num1" id="num1" >
+        <span>*</span>
+        <span id="err1"></span><br>
+        number 2:<input type="text" name="num2" id="num2" >
+        <span>*</span>
+
+        <span id="err2"></span><br>
+
+        <button type="button" name="btn" id="btn" value="btn" onclick="validateInput()">Submit</button>
+        <div id="mydiv"></div>
+
+
+    </body>
+</html>
