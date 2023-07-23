@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <style>
+            body{
+                background-color: aqua;
+            }
+
+            .myc{
+                display: none;
+            }
+            .myclass{
+                display: block;
+            }
+        </style>
+        <script>
+            var arr=[{Name:"Ram",Roll:125,Gender:"Male",Skill:["c","java"],location:"pune",Birthdate:"2000-12-12"}]
+            function display(a=arr)
+            {
+                document.getElementById("t").innerHTML="";
+                document.getElementById("t").innerHTML="";
+                str="";
+                str="<tr><td>Name</td><td>Roll</td><td>Gender</td><td>Skill</td><td>location</td><td>Birthdate</td><tr>"
+                for (let i = 0; i < a.length; i++) {
+                   str+="<tr><td>"+a[i].Name+"</td><td>"+a[i].Roll+"</td><td>"+a[i].Gender+"</td><td>"+a[i].Skill+"</td><td>"+a[i].location+"</td><td>"+a[i].Birthdate+"</td><tr>";
+                }
+                document.getElementById("t").innerHTML=str;
+            }
+
+            function showit()
+            {
+                document.getElementById("f").classList.remove("myc")
+                document.getElementById("f").classList.add("myclass")
+            }
+            function hideit()
+            {
+                document.getElementById("f").classList.remove("myclass")
+                document.getElementById("f").classList.add("myc")
+            }
+            function validate()
+            {
+                var nm=document.getElementById("nm").value;
+                var r=document.getElementById("rn").value ;
+                console.log(r)
+                var ref=document.getElementsByName("gender")
+                  for (let i = 0; i < ref.length; i++) {
+                      if(ref[i].checked)
+                       var gender=ref[i].value;
+                          }
+                var ref1=document.getElementsByName("skill")
+                for (let i = 0; i < ref1.length; i++) {
+                      if(ref1[i].checked)
+                       var s=ref1[i].value;
+                 }
+                 var loc=document.getElementById("location").value
+                 var d=document.getElementById("d").value;
+                
+                var f=validatename(nm);
+                if(f===false){
+                 document.getElementById("e1").innerHTML="Please Enter Valid Name"
+                 return;
+                }
+               var f1=validateno(r);
+
+                if(f1===false){
+                 document.getElementById("e2").innerHTML="Please Enter Valid No"
+                 return;
+                }
+                cd=new Date(d);
+                bd=new Date();
+
+                var diff=bd.getTime()-cd.getTime()
+               var age= parseInt((((((diff/1000)/60)/60)/24)/365).toFixed(0))
+              if(age<21){
+                document.getElementById("e3").innerHTML="You are under age";
+                return ;
+              }
+               var s={Name:nm,Roll:r,Gender:gender,Skill:s,location:loc,Birthdate:d} 
+             arr.push(s);   
+             display();
+             document.getElementById("f").classList.remove("myclass")
+            document.getElementById("f").classList.add("myc")
+            }
+
+
+            function validatename(n)
+            {
+               var pat=/\d/;
+               if(n===""||pat.test(n)||n.trim().length==0)
+                {
+                    return false;
+                }
+                else{
+                    return true;
+                }
+            }
+
+            function validateno(n)
+            {
+                var patt=/[a-zA-Z]/gi;
+               return !patt.test(n);
+            }
+
+            </script>
+        <h1 align="center">Student Form</h1>
+    </head>
+    <body onload=display()>
+
+        <div>
+            <table id="t" border="2" style=" border: 2px solid black;">
+
+            </table>
+        </div>
+
+        <button type="button" onclick=showit()>Show Form</button>   
+        <button type="button" onclick=hideit()>hide Form</button>  
+
+        <div>
+        <form  id="f" class="myc" style="border: 2px solid black; width: 400;height: 400; align-self: center;margin-left: 30%;">
+        Name:<input type="text" name="nm" id="nm"><span id="e1">*</span><br/>
+
+        Roll:<input type="text" name="rn" id="rn"><span id="e2">*</span><br/>
+
+        Gender:<br/>
+        <label for="male">male</label>
+        <input type="radio" name="gender" id="male" value="male" >
+        
+        <label for="female">female</label>
+        <input type="radio" name="gender" id="female" value="female"><br/>
+
+        Skill:<br>
+
+        <label for="c">C-PROGRAM</label>
+        <input type="checkbox" name="skill" id="c" value="c">
+        <label for="java">java</label>
+        <input type="checkbox" name="skill" id="java" value="java">
+        <label for="python">python</label>
+        <input type="checkbox" name="skill" id="python" value="python"><br/>
+
+        Location:<br/>
+       <select id="location">
+        <option>select City</option>
+        <option value="pune">pune</option>
+        <option value="mumbai">mumbai</option>
+        <option value="nashik">nashik</option>
+       </select><br/>
+
+       Date:<br/>
+       <label for="d">Birthdate</label>
+       <input type="date" name="d" id="d"><span id="e3">*</span><br/>
+
+       <button type="button" onclick=validate()>Add Student</button><br>
+    </form>
+    </div>
+    </body>
+</html>
